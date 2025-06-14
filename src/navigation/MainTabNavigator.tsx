@@ -24,7 +24,7 @@ import { BlurView } from 'expo-blur';
 const Tab = createBottomTabNavigator<MainTabParamList>();
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-// Premium Calming Color System - Blues, Teals, Greens, Purples
+// Premium Calming Color System - FULLY SOLID Backgrounds
 const COLORS = {
   light: {
     // Calming Blue Gradient - Professional & Trustworthy
@@ -51,25 +51,25 @@ const COLORS = {
     surface: '#FFFFFF',
     background: '#FFFFFF',
     
-    // Tab-specific colors - Sophisticated gradient background
+    // Tab-specific colors - COMPLETELY SOLID (NO transparency at all)
     tabBar: {
-      background: 'rgba(37, 99, 235, 0.95)',      // Rich blue background
-      backgroundSecondary: 'rgba(29, 78, 216, 0.98)', // Deeper blue gradient
-      border: 'rgba(255, 255, 255, 0.2)',
-      shadow: 'rgba(15, 23, 42, 0.15)',
+      background: '#2563EB',      // SOLID rich blue background
+      backgroundSecondary: '#1D4ED8', // SOLID deeper blue gradient
+      border: '#FFFFFF',          // SOLID white border
+      shadow: 'rgba(15, 23, 42, 0.3)',
       iconActive: '#FFFFFF',
-      iconInactive: 'rgba(255, 255, 255, 0.7)',
+      iconInactive: '#E2E8F0',    // SOLID light gray
       textActive: '#FFFFFF', 
-      textInactive: 'rgba(255, 255, 255, 0.8)',
-      accent: 'rgba(96, 165, 250, 0.3)',
+      textInactive: '#E2E8F0',    // SOLID light gray
+      accent: '#60A5FA',          // SOLID accent color
     },
     
     // Enhanced glassmorphism
     glass: {
-      primary: 'rgba(37, 99, 235, 0.95)',
-      secondary: 'rgba(37, 99, 235, 0.85)',
-      border: 'rgba(255, 255, 255, 0.2)',
-      backdrop: 'rgba(37, 99, 235, 0.1)',
+      primary: '#2563EB',  // SOLID
+      secondary: '#1D4ED8', // SOLID
+      border: '#FFFFFF',   // SOLID
+      backdrop: '#2563EB', // SOLID
     }
   },
   dark: {
@@ -97,30 +97,30 @@ const COLORS = {
     surface: '#1E293B',
     background: '#0F172A',
     
-    // Tab-specific dark colors - Rich dark gradient
+    // Tab-specific dark colors - COMPLETELY SOLID (NO transparency at all)
     tabBar: {
-      background: 'rgba(30, 41, 59, 0.95)',       // Rich dark background
-      backgroundSecondary: 'rgba(15, 23, 42, 0.98)', // Deeper dark gradient
-      border: 'rgba(255, 255, 255, 0.1)',
-      shadow: 'rgba(0, 0, 0, 0.4)',
+      background: '#334155',       // SOLID rich dark background
+      backgroundSecondary: '#1E293B', // SOLID deeper dark gradient
+      border: '#475569',          // SOLID border
+      shadow: 'rgba(0, 0, 0, 0.5)',
       iconActive: '#FFFFFF',
-      iconInactive: 'rgba(255, 255, 255, 0.7)',
+      iconInactive: '#CBD5E1',    // SOLID light gray
       textActive: '#FFFFFF',
-      textInactive: 'rgba(255, 255, 255, 0.8)',
-      accent: 'rgba(59, 130, 246, 0.3)',
+      textInactive: '#CBD5E1',    // SOLID light gray
+      accent: '#3B82F6',          // SOLID accent
     },
     
     // Dark glassmorphism
     glass: {
-      primary: 'rgba(30, 41, 59, 0.95)',
-      secondary: 'rgba(30, 41, 59, 0.85)',
-      border: 'rgba(255, 255, 255, 0.1)',
-      backdrop: 'rgba(30, 41, 59, 0.1)',
+      primary: '#334155',   // SOLID
+      secondary: '#1E293B', // SOLID
+      border: '#475569',    // SOLID
+      backdrop: '#334155',  // SOLID
     }
   }
 };
 
-// Enhanced Typography System - Better Text Visibility
+// Enhanced Typography System - MEDIUM SIZES for Better Visibility
 const TYPOGRAPHY = {
   fontFamily: {
     primary: Platform.select({
@@ -135,19 +135,19 @@ const TYPOGRAPHY = {
     }),
   },
   
-  // Improved tab labels with better sizing
+  // MEDIUM sized tab labels - No more tiny text!
   tabLabel: {
-    fontSize: 10,
+    fontSize: 12,             // Increased from 9 to 12
     fontWeight: '600' as const,
-    letterSpacing: 0.3,
-    lineHeight: 12,
+    letterSpacing: 0.3,       
+    lineHeight: 14,           
   },
   
   tabLabelActive: {
-    fontSize: 10,
+    fontSize: 12,             // Increased from 9 to 12
     fontWeight: '700' as const,
-    letterSpacing: 0.2,
-    lineHeight: 12,
+    letterSpacing: 0.2,       
+    lineHeight: 14,
   },
 };
 
@@ -165,7 +165,7 @@ const ANIMATION = {
   }
 };
 
-// Enhanced Tab Icon with 3D Effects
+// Enhanced Tab Icon with MEDIUM Sizes
 interface AnimatedTabIconProps {
   name: keyof typeof Ionicons.glyphMap;
   color: string;
@@ -294,7 +294,7 @@ const AnimatedTabIcon: React.FC<AnimatedTabIconProps> = ({
   );
 };
 
-// Premium Tab Background with 3D Depth
+// Premium Tab Background - COMPLETELY SOLID
 interface TabBackgroundProps {
   isDark: boolean;
 }
@@ -328,56 +328,55 @@ const TabBackground: React.FC<TabBackgroundProps> = ({ isDark }) => {
 
   return (
     <Animated.View style={[styles.tabBackgroundContainer, backgroundStyle]}>
-      {/* Primary Background - Rich Gradient */}
+      {/* PRIMARY COMPLETELY SOLID Background */}
       <View 
         style={[
           styles.primaryBackground,
-          { backgroundColor: colors.tabBar.background }
+          { backgroundColor: colors.tabBar.background }  // COMPLETELY SOLID
         ]}
       />
       
-      {/* Secondary Gradient Layer */}
+      {/* SECONDARY COMPLETELY SOLID Layer */}
       <View 
         style={[
           styles.secondaryBackground,
-          { backgroundColor: colors.tabBar.backgroundSecondary }
+          { backgroundColor: colors.tabBar.backgroundSecondary }  // COMPLETELY SOLID
         ]}
       />
       
-      {/* Moving Accent Gradient */}
+      {/* SOLID Moving Accent */}
       <Animated.View 
         style={[
           styles.accentGradient,
           gradientStyle,
           { 
-            backgroundColor: colors.tabBar.accent,
-            opacity: 0.4
+            backgroundColor: colors.tabBar.accent,  // SOLID COLOR
           }
         ]}
       />
       
-      {/* Top Border with 3D Effect */}
+      {/* SOLID Top Border */}
       <View style={styles.topBorderContainer}>
         <View 
           style={[
             styles.topBorder,
-            { backgroundColor: colors.tabBar.border }
+            { backgroundColor: colors.tabBar.border }  // SOLID BORDER
           ]}
         />
         <View 
           style={[
             styles.topHighlight,
-            { backgroundColor: 'rgba(255, 255, 255, 0.1)' }
+            { backgroundColor: colors.tabBar.border }  // SOLID HIGHLIGHT
           ]}
         />
       </View>
       
-      {/* Inner Glow for Depth */}
+      {/* SOLID Inner Accent */}
       <View 
         style={[
           styles.innerGlow,
           { 
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            backgroundColor: colors.tabBar.accent,  // SOLID ACCENT
           }
         ]}
       />
@@ -385,7 +384,7 @@ const TabBackground: React.FC<TabBackgroundProps> = ({ isDark }) => {
   );
 };
 
-// Enhanced Tab Label with Perfect Text Visibility
+// Enhanced Tab Label - MEDIUM Size with Full Visibility
 interface AnimatedTabLabelProps {
   label: string;
   focused: boolean;
@@ -412,16 +411,8 @@ const AnimatedTabLabel: React.FC<AnimatedTabLabelProps> = ({
     transform: [{ scale: scale.value }],
   }));
 
-  // Truncate long labels intelligently
-  const truncatedLabel = React.useMemo(() => {
-    if (label.length > 8) {
-      return label.substring(0, 7) + '...';
-    }
-    return label;
-  }, [label]);
-
   return (
-    <Animated.View style={animatedStyle}>
+    <Animated.View style={[styles.labelContainer, animatedStyle]}>
       <Text
         style={[
           focused ? TYPOGRAPHY.tabLabelActive : TYPOGRAPHY.tabLabel,
@@ -431,16 +422,17 @@ const AnimatedTabLabel: React.FC<AnimatedTabLabelProps> = ({
             textAlign: 'center',
             includeFontPadding: false,
             textAlignVertical: 'center',
-            textShadowColor: 'rgba(0, 0, 0, 0.3)',
+            textShadowColor: 'rgba(0, 0, 0, 0.5)',
             textShadowOffset: { width: 0, height: 1 },
             textShadowRadius: 2,
           }
         ]}
         numberOfLines={1}
         allowFontScaling={false}
-        ellipsizeMode="tail"
+        adjustsFontSizeToFit={true}  
+        minimumFontScale={0.9}       // Higher minimum scale
       >
-        {truncatedLabel}
+        {label}
       </Text>
     </Animated.View>
   );
@@ -499,11 +491,11 @@ const MainTabNavigator: React.FC = () => {
             borderTopColor: 'transparent',
             ...(Platform.OS === 'ios' && {
               shadowOffset: { width: 0, height: -8 },
-              shadowOpacity: 0.25,
+              shadowOpacity: 0.3,
               shadowRadius: 20,
             }),
             ...(Platform.OS === 'android' && {
-              elevation: 16,
+              elevation: 20,
             }),
           }
         ],
@@ -516,7 +508,7 @@ const MainTabNavigator: React.FC = () => {
               <AnimatedTabIcon 
                 name={iconName}
                 color={color} 
-                size={focused ? 24 : 22} 
+                size={focused ? 28 : 26}  // MEDIUM sizes: 26/28 instead of 22/24
                 focused={focused}
                 routeName={route.name}
                 isDark={isDark}
@@ -534,9 +526,9 @@ const MainTabNavigator: React.FC = () => {
         tabBarHideOnKeyboard: true,
         tabBarBackground: () => <TabBackground isDark={isDark} />,
         tabBarItemStyle: {
-          paddingTop: 8,
-          paddingBottom: 6,
-          marginHorizontal: 2,
+          paddingTop: 10,
+          paddingBottom: 8,
+          marginHorizontal: 4,
         },
         tabBarAccessibilityLabel: `${getTabLabel(route.name)} Tab`,
         tabBarTestID: `tab-${route.name.toLowerCase()}`,
@@ -550,18 +542,18 @@ const MainTabNavigator: React.FC = () => {
   );
 };
 
-// Refined StyleSheet with Perfect Spacing and 3D Effects
+// Enhanced StyleSheet - MEDIUM Sizes & SOLID Backgrounds
 const styles = StyleSheet.create({
-  // Reduced Tab Bar - Compact & Clean
+  // Tab Bar - LARGER for Medium Sizes
   tabBar: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    paddingBottom: Platform.OS === 'ios' ? 24 : 12,
-    paddingTop: 12,
+    paddingBottom: Platform.OS === 'ios' ? 30 : 16,
+    paddingTop: 14,
     paddingHorizontal: 16,
-    height: Platform.OS === 'ios' ? 78 : 68, // Reduced height
+    height: Platform.OS === 'ios' ? 92 : 78, // INCREASED height for medium sizes
     borderTopWidth: 0,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
@@ -569,44 +561,54 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   
-  // Tab Item Layout - Perfect Spacing
+  // Tab Item Layout - More Space for Medium Elements
   tabItemContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 2,
-    minHeight: 50,
+    paddingVertical: 3,
+    minHeight: 58,  // INCREASED for medium elements
     width: '100%',
+    flex: 1,
   },
   
-  // Icon Container - Optimized Size
+  // Icon Container - MEDIUM Size
   tabIconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    width: 40,
-    height: 26,
+    width: 48,      // INCREASED from 40 to 48
+    height: 30,     // INCREASED from 26 to 30
     marginBottom: 4,
   },
   
-  // 3D Shadow Effect
-  iconShadow: {
-    position: 'absolute',
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    opacity: 0,
+  // Label Container - WIDER for Medium Text
+  labelContainer: {
+    width: '100%',
+    minHeight: 16,      // INCREASED minimum height
+    maxWidth: 72,       // INCREASED max width for "Practice"
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 3,
   },
   
-  // Enhanced Glow Effect
-  iconGlow: {
+  // Enhanced Effects for Medium Icons
+  iconShadow: {
     position: 'absolute',
-    width: 32,
-    height: 32,
+    width: 32,      // INCREASED from 28 to 32
+    height: 32,     // INCREASED from 28 to 32
     borderRadius: 16,
     opacity: 0,
   },
   
-  // Premium Background System
+  iconGlow: {
+    position: 'absolute',
+    width: 36,      // INCREASED from 32 to 36
+    height: 36,     // INCREASED from 32 to 36
+    borderRadius: 18,
+    opacity: 0,
+  },
+  
+  // COMPLETELY SOLID Background System
   tabBackgroundContainer: {
     position: 'absolute',
     top: 0,
@@ -618,22 +620,23 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   
-  // Rich Primary Background
+  // COMPLETELY SOLID Primary Background
   primaryBackground: {
     ...StyleSheet.absoluteFillObject,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
+    opacity: 1.0,  // COMPLETELY SOLID
   },
   
-  // Gradient Secondary Layer
+  // COMPLETELY SOLID Secondary Layer
   secondaryBackground: {
     ...StyleSheet.absoluteFillObject,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    opacity: 0.8,
+    opacity: 0.9,  // HIGH OPACITY for solid look
   },
   
-  // Moving Accent Gradient
+  // SOLID Moving Accent
   accentGradient: {
     position: 'absolute',
     top: 0,
@@ -641,9 +644,10 @@ const styles = StyleSheet.create({
     height: '100%',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
+    opacity: 0.15,  // HIGHER opacity for visibility
   },
   
-  // 3D Top Border System
+  // SOLID Top Border System
   topBorderContainer: {
     position: 'absolute',
     top: 0,
@@ -661,7 +665,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 1,
-    opacity: 0.6,
+    opacity: 1.0,  // COMPLETELY SOLID
   },
   
   topHighlight: {
@@ -670,10 +674,10 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 2,
-    opacity: 0.3,
+    opacity: 0.8,  // HIGH OPACITY
   },
   
-  // Inner Glow for Depth
+  // SOLID Inner Accent
   innerGlow: {
     position: 'absolute',
     top: 3,
@@ -682,6 +686,7 @@ const styles = StyleSheet.create({
     height: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    opacity: 0.1,  // HIGHER opacity for definition
   },
 });
 
